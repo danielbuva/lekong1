@@ -9,11 +9,7 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  View as ViewImpl,
-} from "@react-three/drei";
+import { PerspectiveCamera, View as ViewImpl } from "@react-three/drei";
 import { tunnel } from "@/global";
 
 export const Common = ({ color }: { color: string }) => (
@@ -28,15 +24,11 @@ export const Common = ({ color }: { color: string }) => (
 
 interface ViewProps {
   children?: ReactNode;
-  orbit?: boolean;
   className?: string;
 }
 
 const View = forwardRef<HTMLDivElement, ViewProps>(
-  (
-    { children, orbit, className, ...props },
-    ref: Ref<HTMLDivElement | null>
-  ) => {
+  ({ children, className, ...props }, ref: Ref<HTMLDivElement | null>) => {
     const localRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => localRef.current);
 
@@ -46,7 +38,6 @@ const View = forwardRef<HTMLDivElement, ViewProps>(
         <tunnel.In>
           <ViewImpl track={localRef as MutableRefObject<HTMLElement>}>
             {children}
-            {orbit && <OrbitControls />}
           </ViewImpl>
         </tunnel.In>
       </>

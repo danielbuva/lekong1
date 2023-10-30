@@ -1,5 +1,6 @@
 "use client";
 
+import { TrackballControls } from "@react-three/drei";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
@@ -45,9 +46,15 @@ const Common = dynamic(
 
 export default function Page() {
   return (
-    <View orbit className="relative min-h-screen sm:w-full">
+    <View className="relative min-h-screen sm:w-full">
       <Suspense fallback={null}>
         <VialModel />
+        <TrackballControls
+          maxDistance={950}
+          minDistance={30}
+          noPan
+          rotateSpeed={4}
+        />
       </Suspense>
     </View>
   );
