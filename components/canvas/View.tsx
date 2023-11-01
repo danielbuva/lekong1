@@ -1,5 +1,8 @@
 "use client";
 
+
+import { tunnel } from "@/global";
+import { PerspectiveCamera, View as ViewImpl } from "@react-three/drei";
 import {
   forwardRef,
   type MutableRefObject,
@@ -9,16 +12,14 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
-import { PerspectiveCamera, View as ViewImpl } from "@react-three/drei";
-import { tunnel } from "@/global";
 
 export const Common = ({ color }: { color: string }) => (
   <Suspense fallback={null}>
-    {color && <color attach="background" args={[color]} />}
+    {color && <color args={[color]} attach="background" />}
     <ambientLight intensity={0.5} />
-    <pointLight position={[20, 30, 10]} intensity={1} />
-    <pointLight position={[-10, -10, -10]} color="blue" />
-    <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
+    <pointLight intensity={1} position={[20, 30, 10]} />
+    <pointLight color="blue" position={[-10, -10, -10]} />
+    <PerspectiveCamera fov={40} makeDefault position={[0, 0, 6]} />
   </Suspense>
 );
 
@@ -34,7 +35,7 @@ const View = forwardRef<HTMLDivElement, ViewProps>(
 
     return (
       <>
-        <div ref={localRef} className={className} {...props} />
+        <div className={className} ref={localRef} {...props} />
         <tunnel.In>
           <ViewImpl track={localRef as MutableRefObject<HTMLElement>}>
             {children}

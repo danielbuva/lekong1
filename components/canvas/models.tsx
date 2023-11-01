@@ -1,21 +1,21 @@
 import { useGLTF } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
+import type { GLTF } from "three-stdlib";
 
 type VialGLTFResult = GLTF & {
-  nodes: {
-    CAPAC_Material_0: THREE.Mesh;
-    CAPAC001_Material001_0: THREE.Mesh;
-    tube_Material009_0: THREE.Mesh;
-  };
   materials: {
     ["Material.001"]: THREE.MeshStandardMaterial;
     ["Material.002"]: THREE.MeshStandardMaterial;
     ["Material.009"]: THREE.MeshPhysicalMaterial;
   };
+  nodes: {
+    CAPAC001_Material001_0: THREE.Mesh;
+    CAPAC_Material_0: THREE.Mesh;
+    tube_Material009_0: THREE.Mesh;
+  };
 };
 
 export function VialModel(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/vial.glb") as VialGLTFResult;
+  const { materials, nodes } = useGLTF("/vial.glb") as VialGLTFResult;
   return (
     <group {...props} dispose={null} rotation={[0, 300, 0]}>
       <group

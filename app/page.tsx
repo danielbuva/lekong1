@@ -15,14 +15,14 @@ const VialModel = dynamic(
 const View = dynamic(
   () => import("@/components/canvas/View").then((mod) => mod.View),
   {
-    ssr: false,
     loading: Spinner,
+    ssr: false,
   }
 );
-const Common = dynamic(
-  () => import("@/components/canvas/View").then((mod) => mod.Common),
-  { ssr: false }
-);
+// const Common = dynamic(
+//   () => import("@/components/canvas/View").then((mod) => mod.Common),
+//   { ssr: false }
+// );
 
 export default function Page() {
   return (
