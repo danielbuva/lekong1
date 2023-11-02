@@ -18,6 +18,7 @@ export function VialModel(props: JSX.IntrinsicElements["group"]) {
   const { materials, nodes } = useGLTF("/vial.glb") as VialGLTFResult;
   return (
     <group {...props} dispose={null} rotation={[0, 300, 0]}>
+      <ambientLight/>
       <group
         position={[0, 3.441, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -56,3 +57,28 @@ export function VialModel(props: JSX.IntrinsicElements["group"]) {
 }
 
 useGLTF.preload("/vial.glb");
+
+type HerbWorkStationPlaceHolderGLTFResult = GLTF & {
+  materials: {
+    Material: THREE.MeshStandardMaterial;
+  };
+  nodes: {
+    Cube: THREE.Mesh;
+  };
+};
+
+export function HerbWorkStationPlaceHolder(props: JSX.IntrinsicElements["group"]) {
+  const { materials, nodes } = useGLTF("/herbworkstationplaceholder.glb") as HerbWorkStationPlaceHolderGLTFResult;
+  return (
+    <group {...props} dispose={null} scale={20}>
+      <ambientLight/>
+      <mesh
+        geometry={nodes.Cube.geometry}
+        material={materials.Material}
+        scale={[3.501, 0.392, 1.721]}
+      />
+    </group>
+  );
+}
+
+useGLTF.preload("/herbworkstationplaceholder.glb");
