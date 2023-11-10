@@ -1,6 +1,7 @@
 "use client";
 
 import Spinner from "@/components/loaders/Spinner";
+import LekongIconLogo from "@/components/logo/LekongIconLogo";
 import LekongNameLogo from "@/components/logo/LekongNameLogo";
 import { CameraControls, TrackballControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -56,9 +57,10 @@ export default function Page() {
           <Rig show={show}/>
         </Suspense>
       </View>
-      {/* <div className="w-full justify-end flex">
-        <Image alt="logo" height={0} src="/lekong.png" width={60}/>
-      </div> */}
+      <div className="w-full justify-end flex">
+        <LekongIconLogo/>
+      </div>
+
     </main>
   );
 }
