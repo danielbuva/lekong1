@@ -6,8 +6,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: "lekong",
   description: "breathe deep",
-  title: "leKONG",
+  icons: ["/favicon-32x32.png", "/favicon-16x16.png"],
+  manifest: "/site.webmanifest",
+  title: "leKONG"
 };
 
 export default function RootLayout({
