@@ -57,7 +57,7 @@ export default function Page() {
           <Rig show={show}/>
         </Suspense>
       </View>
-      <div className="w-full justify-end flex">
+      <div className="w-full justify-end flex z-10">
         <LekongIconLogo/>
       </div>
 
