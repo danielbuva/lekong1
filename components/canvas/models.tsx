@@ -1,4 +1,7 @@
 import { useGLTF } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { useRef } from "react";
+import type { Group, Object3DEventMap } from "three";
 import type { GLTF } from "three-stdlib";
 
 type VialGLTFResult = GLTF & {
@@ -16,9 +19,12 @@ type VialGLTFResult = GLTF & {
 
 export function VialModel(props: JSX.IntrinsicElements["group"]) {
   const { materials, nodes } = useGLTF("/vial.glb") as VialGLTFResult;
+  const controls = useThree((state)=>state.controls)
+  const self = useRef<Group<Object3DEventMap>>(null)
+  console.log({controls})
   return (
-    <group {...props} dispose={null} rotation={[0, 300, 0]}>
-      <ambientLight/>
+    <group {...props} dispose={null} ref={self} rotation={[0, 300, 0]}>
+      <ambientLight />
       <group
         position={[0, 3.441, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -70,7 +76,7 @@ type HerbWorkStationPlaceHolderGLTFResult = GLTF & {
 export function HerbWorkStationPlaceHolder(props: JSX.IntrinsicElements["group"]) {
   const { materials, nodes } = useGLTF("/herbworkstationplaceholder.glb") as HerbWorkStationPlaceHolderGLTFResult;
   return (
-    <group {...props} dispose={null} scale={20}>
+    <group {...props} dispose={null} rotation={[-0.2,-0.3,0]} scale={20}>
       <ambientLight/>
       <mesh
         geometry={nodes.Cube.geometry}
