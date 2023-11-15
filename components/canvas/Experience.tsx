@@ -43,7 +43,6 @@ export default function Experience({
       });
     }
   }, [show, camera.position, tl]);
-  console.log(camera.position);
   return (
     <Suspense fallback={null}>
       <Stars
@@ -65,7 +64,7 @@ export default function Experience({
       <TrackballControls
         maxDistance={950}
         minDistance={30}
-        // noPan
+        noPan
         rotateSpeed={4}
       />
     </Suspense>
