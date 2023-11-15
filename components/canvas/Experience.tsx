@@ -31,18 +31,18 @@ export default function Experience({
   show: boolean;
 }) {
   const { camera } = useThree();
-  const tl = gsap.timeline();
   useEffect(() => {
     if (show) {
-      tl.to(camera.position, {
+      gsap.to(camera.position, {
         duration: 0.8,
         ease: "power1",
         x: 28,
         y: 107,
         z: 246,
       });
+      gsap.to(camera.up, { duration: 0.8, ease: "power1", x: 0, y: 1, z: 0 });
     }
-  }, [show, camera.position, tl]);
+  }, [show, camera.position, camera.up]);
   return (
     <Suspense fallback={null}>
       <Stars
@@ -57,7 +57,20 @@ export default function Experience({
       <VialModel
         onClick={() => {
           setShow(false);
-          tl.to(camera.position, { x: 0, y: 40, z: 70 });
+          gsap.to(camera.position, {
+            duration: 0.8,
+            ease: "power1",
+            x: 0,
+            y: 40,
+            z: 70,
+          });
+          gsap.to(camera.up, {
+            duration: 0.8,
+            ease: "power1",
+            x: 0,
+            y: 1,
+            z: 0,
+          });
         }}
       />
       <HerbWorkStationPlaceHolder visible={show} />
