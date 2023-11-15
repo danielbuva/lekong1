@@ -22,7 +22,7 @@ export function VialModel(props: JSX.IntrinsicElements["group"]) {
 
   return (
     <group {...props} dispose={null} ref={self} rotation={[0, 300, 0]}>
-      <ambientLight />
+      <ambientLight intensity={2} />
       <group
         position={[0, 3.441, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -52,7 +52,7 @@ export function VialModel(props: JSX.IntrinsicElements["group"]) {
       >
         <mesh
           geometry={nodes.tube_Material009_0.geometry}
-          material={materials["Material.009"]}
+          material={materials["Material.002"]}
           position={[0, 0, 0.056]}
         />
       </group>
