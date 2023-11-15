@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  Stars,
-  PresentationControls,
-  ArcballControls,
-} from "@react-three/drei";
+import { Stars, ArcballControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
@@ -58,13 +54,6 @@ export default function Experience({
         saturation={0}
         speed={1}
       />
-      {/* <PresentationControls
-        cursor={false}
-        global
-        polar={[-Infinity, Infinity]}
-        speed={2}
-      >
-      </PresentationControls> */}
       <VialModel
         onClick={() => {
           setShow(false);
