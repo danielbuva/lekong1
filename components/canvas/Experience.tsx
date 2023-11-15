@@ -1,6 +1,6 @@
 "use client";
 
-import { TrackballControls, Stars } from "@react-three/drei";
+import { Stars, PresentationControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
@@ -54,34 +54,35 @@ export default function Experience({
         saturation={0}
         speed={1}
       />
-      <VialModel
-        onClick={() => {
-          setShow(false);
-          gsap.to(camera.position, {
-            duration: 0.8,
-            ease: "power1",
-            x: 0,
-            y: 40,
-            z: 70,
-          });
-          gsap.to(camera.up, {
-            duration: 0.8,
-            ease: "power1",
-            x: 0,
-            y: 1,
-            z: 0,
-          });
-        }}
-        onPointerOut={() => (document.body.style.cursor = "auto")}
-        onPointerOver={() => (document.body.style.cursor = "pointer")}
-      />
+      <PresentationControls
+        cursor={false}
+        global
+        polar={[-Infinity, Infinity]}
+        speed={2}
+      >
+        <VialModel
+          onClick={() => {
+            setShow(false);
+            gsap.to(camera.position, {
+              duration: 0.8,
+              ease: "power1",
+              x: 0,
+              y: 40,
+              z: 70,
+            });
+            gsap.to(camera.up, {
+              duration: 0.8,
+              ease: "power1",
+              x: 0,
+              y: 1,
+              z: 0,
+            });
+          }}
+          onPointerOut={() => (document.body.style.cursor = "auto")}
+          onPointerOver={() => (document.body.style.cursor = "pointer")}
+        />
+      </PresentationControls>
       <HerbWorkStationPlaceHolder visible={show} />
-      <TrackballControls
-        maxDistance={950}
-        minDistance={30}
-        noPan
-        rotateSpeed={4}
-      />
     </Suspense>
   );
 }
