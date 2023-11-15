@@ -1,6 +1,10 @@
 "use client";
 
-import { Stars, PresentationControls } from "@react-three/drei";
+import {
+  Stars,
+  PresentationControls,
+  ArcballControls,
+} from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
@@ -54,34 +58,35 @@ export default function Experience({
         saturation={0}
         speed={1}
       />
-      <PresentationControls
+      {/* <PresentationControls
         cursor={false}
         global
         polar={[-Infinity, Infinity]}
         speed={2}
       >
-        <VialModel
-          onClick={() => {
-            setShow(false);
-            gsap.to(camera.position, {
-              duration: 0.8,
-              ease: "power1",
-              x: 0,
-              y: 40,
-              z: 70,
-            });
-            gsap.to(camera.up, {
-              duration: 0.8,
-              ease: "power1",
-              x: 0,
-              y: 1,
-              z: 0,
-            });
-          }}
-          onPointerOut={() => (document.body.style.cursor = "auto")}
-          onPointerOver={() => (document.body.style.cursor = "pointer")}
-        />
-      </PresentationControls>
+      </PresentationControls> */}
+      <VialModel
+        onClick={() => {
+          setShow(false);
+          gsap.to(camera.position, {
+            duration: 0.8,
+            ease: "power1",
+            x: 0,
+            y: 40,
+            z: 70,
+          });
+          gsap.to(camera.up, {
+            duration: 0.8,
+            ease: "power1",
+            x: 0,
+            y: 1,
+            z: 0,
+          });
+        }}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+      />
+      <ArcballControls dampingFactor={5} enablePan={false} makeDefault />
       <HerbWorkStationPlaceHolder visible={show} />
     </Suspense>
   );
