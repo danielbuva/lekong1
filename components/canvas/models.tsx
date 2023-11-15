@@ -77,8 +77,15 @@ export function HerbWorkStationPlaceHolder(
   const { materials, nodes } = useGLTF(
     "/herbworkstationplaceholder.glb",
   ) as HerbWorkStationPlaceHolderGLTFResult;
+
   return (
-    <group {...props} dispose={null} rotation={[-0.2, -0.3, 0]} scale={20}>
+    <group
+      {...props}
+      dispose={null}
+      position={[40, -14, 0]}
+      rotation={[-0.2, -0.3, 0]}
+      scale={20}
+    >
       <ambientLight />
       <mesh
         geometry={nodes.Cube.geometry}
