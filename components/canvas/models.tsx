@@ -1,5 +1,4 @@
 import { useGLTF } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import type { Group, Object3DEventMap } from "three";
 import type { GLTF } from "three-stdlib";
@@ -19,9 +18,8 @@ type VialGLTFResult = GLTF & {
 
 export function VialModel(props: JSX.IntrinsicElements["group"]) {
   const { materials, nodes } = useGLTF("/vial.glb") as VialGLTFResult;
-  const controls = useThree((state)=>state.controls)
-  const self = useRef<Group<Object3DEventMap>>(null)
-  console.log({controls})
+  const self = useRef<Group<Object3DEventMap>>(null);
+
   return (
     <group {...props} dispose={null} ref={self} rotation={[0, 300, 0]}>
       <ambientLight />
@@ -73,11 +71,15 @@ type HerbWorkStationPlaceHolderGLTFResult = GLTF & {
   };
 };
 
-export function HerbWorkStationPlaceHolder(props: JSX.IntrinsicElements["group"]) {
-  const { materials, nodes } = useGLTF("/herbworkstationplaceholder.glb") as HerbWorkStationPlaceHolderGLTFResult;
+export function HerbWorkStationPlaceHolder(
+  props: JSX.IntrinsicElements["group"],
+) {
+  const { materials, nodes } = useGLTF(
+    "/herbworkstationplaceholder.glb",
+  ) as HerbWorkStationPlaceHolderGLTFResult;
   return (
-    <group {...props} dispose={null} rotation={[-0.2,-0.3,0]} scale={20}>
-      <ambientLight/>
+    <group {...props} dispose={null} rotation={[-0.2, -0.3, 0]} scale={20}>
+      <ambientLight />
       <mesh
         geometry={nodes.Cube.geometry}
         material={materials.Material}

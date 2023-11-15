@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "breathe deep",
   icons: ["/favicon-32x32.png", "/favicon-16x16.png"],
   manifest: "/site.webmanifest",
-  title: "leKONG"
+  title: "leKONG",
 };
 
 export default function RootLayout({

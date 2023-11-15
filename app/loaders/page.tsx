@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function LoaderPage() {
   return (
-    <div className="min-h-screen items-center flex justify-center">
+    <div className="flex min-h-screen items-center justify-center">
       <Link href="/">go home</Link>
       <MandalaLoader />
     </div>

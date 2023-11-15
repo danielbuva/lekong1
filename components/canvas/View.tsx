@@ -1,6 +1,5 @@
 "use client";
 
-
 import { tunnel } from "@/global";
 import { PerspectiveCamera, View as ViewImpl } from "@react-three/drei";
 import {
@@ -43,7 +42,7 @@ const View = forwardRef<HTMLDivElement, ViewProps>(
         </tunnel.In>
       </>
     );
-  }
+  },
 );
 
 View.displayName = "View";
