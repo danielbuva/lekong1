@@ -4,7 +4,7 @@
 /** @type { PrettierConfig | SortImportsConfig | TailwindConfig } */
 const config = {
   plugins: ["prettier-plugin-tailwindcss"],
-  tailwindConfig: "./expo/tailwind.config.js",
+  tailwindConfig: "./tailwind.config.ts",
 };
 
 export default config;
