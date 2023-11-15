@@ -72,6 +72,8 @@ export default function Experience({
             z: 0,
           });
         }}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
       />
       <HerbWorkStationPlaceHolder visible={show} />
       <TrackballControls
