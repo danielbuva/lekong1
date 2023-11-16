@@ -1,36 +1,22 @@
 import { ThemeContext } from "@/hooks/useTheme";
 import type { ReactNode } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
+
+type Theme = "light" | "dark" | "system" | null;
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<"light" | "dark" | "system" | null>(null);
+  const initialTheme = localStorage.getItem("theme") as Theme;
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const darkMode = () => {
-    document.documentElement.style.setProperty(
-      "--foreground-rgb",
-      "255, 255, 255",
-    );
-    document.documentElement.style.setProperty(
-      "--background-start-rgb",
-      "0, 0, 0",
-    );
-    document.documentElement.style.setProperty(
-      "--background-end-rgb",
-      "0, 0, 0",
-    );
+    setDarkBody();
+    localStorage.setItem("theme", "dark");
     setTheme("dark");
   };
 
   const lightMode = () => {
-    document.documentElement.style.setProperty("--foreground-rgb", "0, 0, 0");
-    document.documentElement.style.setProperty(
-      "--background-start-rgb",
-      "214, 219, 220",
-    );
-    document.documentElement.style.setProperty(
-      "--background-end-rgb",
-      "255, 255, 255",
-    );
+    setLightBody();
+    localStorage.setItem("theme", "light");
     setTheme("light");
   };
 
@@ -38,8 +24,8 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     mode === "dark" ? darkMode() : lightMode();
   }, []);
 
-  useEffect(() => {
-    if (theme === "system" && typeof window !== "undefined") {
+  useLayoutEffect(() => {
+    if (!theme || (theme === "system" && typeof window !== "undefined")) {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
       const themeChangeHandler = (e: MediaQueryListEvent) =>
@@ -50,6 +36,10 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
       mediaQuery.addEventListener("change", themeChangeHandler);
 
       return () => mediaQuery.removeEventListener("change", themeChangeHandler);
+    } else if (theme === "light") {
+      setLightBody();
+    } else {
+      setDarkBody();
     }
   }, [theme, setMode]);
 
@@ -57,5 +47,29 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     <ThemeContext.Provider value={{ darkMode, lightMode, theme }}>
       {children}
     </ThemeContext.Provider>
+  );
+}
+
+function setDarkBody() {
+  document.documentElement.style.setProperty(
+    "--foreground-rgb",
+    "255, 255, 255",
+  );
+  document.documentElement.style.setProperty(
+    "--background-start-rgb",
+    "0, 0, 0",
+  );
+  document.documentElement.style.setProperty("--background-end-rgb", "0, 0, 0");
+}
+
+function setLightBody() {
+  document.documentElement.style.setProperty("--foreground-rgb", "0, 0, 0");
+  document.documentElement.style.setProperty(
+    "--background-start-rgb",
+    "214, 219, 220",
+  );
+  document.documentElement.style.setProperty(
+    "--background-end-rgb",
+    "255, 255, 255",
   );
 }
