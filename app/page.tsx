@@ -1,10 +1,6 @@
 "use client";
 
-import Splash from "@/components/dom/Splash";
-import Spinner from "@/components/loaders/Spinner";
 import LekongIconLogo from "@/components/logo/LekongIconLogo";
-import LekongNameLogo from "@/components/logo/LekongNameLogo";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
@@ -17,7 +13,24 @@ const Experience = dynamic(
 const View = dynamic(
   () => import("@/components/canvas/View").then((mod) => mod.View),
   {
-    loading: Spinner,
+    ssr: false,
+  },
+);
+const Splash = dynamic(
+  () => import("@/components/dom/Splash").then((mod) => mod.default),
+  {
+    ssr: false,
+  },
+);
+const LekongNameLogo = dynamic(
+  () => import("@/components/logo/LekongNameLogo").then((mod) => mod.default),
+  {
+    ssr: false,
+  },
+);
+const ThemeSwitcher = dynamic(
+  () => import("@/components/ThemeSwitcher").then((mod) => mod.default),
+  {
     ssr: false,
   },
 );

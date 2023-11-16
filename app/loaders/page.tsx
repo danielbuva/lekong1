@@ -1,7 +1,7 @@
 "use client";
 
 import MandalaLoader from "@/components/loaders/Mandala";
-import Spirograph from "@/components/svgs/spirograph";
+import Spirograph from "@/components/svgs/Spirograph";
 import Link from "next/link";
 
 export default function LoaderPage() {

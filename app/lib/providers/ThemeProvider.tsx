@@ -1,3 +1,5 @@
+"use client";
+
 import { ThemeContext } from "@/hooks/useTheme";
 import type { ReactNode } from "react";
 import { useCallback, useLayoutEffect, useState } from "react";
@@ -5,7 +7,10 @@ import { useCallback, useLayoutEffect, useState } from "react";
 type Theme = "light" | "dark" | "system" | null;
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const initialTheme = localStorage.getItem("theme") as Theme;
+  let initialTheme = null;
+  if (typeof window !== "undefined") {
+    initialTheme = localStorage.getItem("theme") as Theme;
+  }
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const darkMode = () => {
