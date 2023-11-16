@@ -1,11 +1,11 @@
-import useSystemTheme from "@/hooks/useSystemTheme";
+import { useTheme } from "@/hooks/useTheme";
 import type { ImageProps } from "next/image";
 import Image from "next/image";
 
 export default function LekongNameLogo(
   props: Omit<ImageProps, "src" | "alt" | "width">,
 ) {
-  const theme = useSystemTheme();
+  const { theme } = useTheme();
   if (!theme) return null;
   return (
     <Image

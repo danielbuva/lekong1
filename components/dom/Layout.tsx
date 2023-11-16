@@ -1,5 +1,6 @@
 "use client";
 
+import ThemeProvider from "@/app/lib/providers/ThemeProvider";
 import dynamic from "next/dynamic";
 import { type ReactNode, useRef } from "react";
 const Scene = dynamic(() => import("@/components/canvas/Scene"), {
@@ -20,7 +21,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         width: " 100%",
       }}
     >
-      {children}
+      <ThemeProvider>{children}</ThemeProvider>
       <Scene
         eventPrefix="client"
         eventSource={ref}
