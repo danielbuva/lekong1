@@ -11,7 +11,7 @@ export default function LekongNameLogo(
     <Image
       {...props}
       alt="lekong"
-      className="z-10 cursor-pointer"
+      className="z-10 h-auto w-auto cursor-pointer"
       height={0}
       priority
       src={theme === "light" ? "/lekong_b.png" : "/lekong_w.png"}

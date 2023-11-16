@@ -4,10 +4,10 @@ export default function LekongIconLogo() {
   return (
     <Image
       alt="lekong icon"
-      className="cursor-pointer"
-      height={0}
+      className="h-auto w-auto cursor-pointer"
+      height={40}
       src="/lekong_icon.png"
-      width={80}
+      width={60}
     />
   );
 }
