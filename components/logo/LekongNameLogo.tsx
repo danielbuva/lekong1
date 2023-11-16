@@ -13,6 +13,7 @@ export default function LekongNameLogo(
       alt="lekong"
       className="z-10 cursor-pointer"
       height={0}
+      priority
       src={theme === "light" ? "/lekong_b.png" : "/lekong_w.png"}
       width={200}
     />
