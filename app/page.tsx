@@ -15,7 +15,7 @@ const View = dynamic(
   {
     loading: () => {
       return (
-        <div className="absolute flex h-screen w-screen items-center justify-center bg-blue-500">
+        <div className="absolute z-30 flex h-screen w-screen items-center justify-center bg-blue-500">
           loading
         </div>
       );
