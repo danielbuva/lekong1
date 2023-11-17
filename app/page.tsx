@@ -13,6 +13,13 @@ const Experience = dynamic(
 const View = dynamic(
   () => import("@/components/canvas/View").then((mod) => mod.View),
   {
+    loading: () => {
+      return (
+        <div className="absolute flex h-screen w-screen items-center justify-center bg-blue-500">
+          loading
+        </div>
+      );
+    },
     ssr: false,
   },
 );
