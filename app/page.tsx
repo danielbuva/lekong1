@@ -41,6 +41,10 @@ const ThemeSwitcher = dynamic(
     ssr: false,
   },
 );
+const AudioControls = dynamic(
+  () => import("@/components/AudioControls").then((mod) => mod.default),
+  { ssr: false },
+);
 
 export default function Page() {
   const [show, setShow] = useState(false);
@@ -55,7 +59,8 @@ export default function Page() {
       <View className="absolute top-0 min-h-screen sm:w-full">
         <Experience setShow={setShow} show={show} />
       </View>
-      <div className="z-10 flex w-full justify-end p-6">
+      <div className="z-10 flex w-full justify-between p-6">
+        <AudioControls />
         <LekongIconLogo />
       </div>
     </main>
