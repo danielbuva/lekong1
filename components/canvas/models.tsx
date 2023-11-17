@@ -17,7 +17,7 @@ type VialGLTFResult = GLTF & {
 };
 
 export function VialModel(props: JSX.IntrinsicElements["group"]) {
-  const { materials, nodes } = useGLTF("/vial.glb") as VialGLTFResult;
+  const { materials, nodes } = useGLTF("/models/vial.glb") as VialGLTFResult;
   const self = useRef<Group<Object3DEventMap>>(null);
 
   return (
@@ -60,7 +60,7 @@ export function VialModel(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/vial.glb");
+useGLTF.preload("/models/vial.glb");
 
 type HerbWorkStationPlaceHolderGLTFResult = GLTF & {
   materials: {
@@ -75,7 +75,7 @@ export function HerbWorkStationPlaceHolder(
   props: JSX.IntrinsicElements["group"],
 ) {
   const { materials, nodes } = useGLTF(
-    "/herbworkstationplaceholder.glb",
+    "/models/herbworkstationplaceholder.glb",
   ) as HerbWorkStationPlaceHolderGLTFResult;
 
   return (
@@ -96,4 +96,4 @@ export function HerbWorkStationPlaceHolder(
   );
 }
 
-useGLTF.preload("/herbworkstationplaceholder.glb");
+useGLTF.preload("/models/herbworkstationplaceholder.glb");
