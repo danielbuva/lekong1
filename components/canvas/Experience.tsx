@@ -1,27 +1,15 @@
 "use client";
 
+import {
+  HerbWorkStationPlaceHolder,
+  Poster,
+  VialModel,
+} from "@/components/canvas/models";
 import { Stars, ArcballControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import dynamic from "next/dynamic";
 import type { Dispatch, SetStateAction } from "react";
 import { Suspense, useEffect } from "react";
-
-const VialModel = dynamic(
-  () => import("@/components/canvas/models").then((mod) => mod.VialModel),
-  {
-    ssr: false,
-  },
-);
-const HerbWorkStationPlaceHolder = dynamic(
-  () =>
-    import("@/components/canvas/models").then(
-      (mod) => mod.HerbWorkStationPlaceHolder,
-    ),
-  {
-    ssr: false,
-  },
-);
 
 export default function Experience({
   setShow,
@@ -77,6 +65,7 @@ export default function Experience({
       />
       <ArcballControls dampingFactor={5} enablePan={false} makeDefault />
       <HerbWorkStationPlaceHolder visible={show} />
+      <Poster visible={show} />
     </Suspense>
   );
 }

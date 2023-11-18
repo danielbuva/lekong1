@@ -97,3 +97,37 @@ export function HerbWorkStationPlaceHolder(
 }
 
 useGLTF.preload("/models/herbworkstationplaceholder.glb");
+
+type PosterGLTFResult = GLTF & {
+  materials: {
+    ["Material.003"]: THREE.MeshStandardMaterial;
+  };
+  nodes: {
+    Object_4: THREE.Mesh;
+  };
+};
+
+export function Poster(props: JSX.IntrinsicElements["group"]) {
+  const { materials, nodes } = useGLTF(
+    "/models/poster.glb",
+  ) as PosterGLTFResult;
+  return (
+    <group
+      {...props}
+      dispose={null}
+      position={[-63, 10, -40]}
+      rotation={[1.24, 0.05, 1.3]}
+      scale={40}
+    >
+      <mesh
+        castShadow
+        geometry={nodes.Object_4.geometry}
+        material={materials["Material.003"]}
+        receiveShadow
+        rotation={[0, 0, 0]}
+      />
+    </group>
+  );
+}
+
+useGLTF.preload("/models/poster.glb");
