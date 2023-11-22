@@ -6,7 +6,6 @@ const draw = {
       opacity: 1,
       pathLength: 1,
       transition: {
-        // opacity: { duration: 20/ },
         pathLength: { bounce: 0, duration: 5 },
       },
     };
