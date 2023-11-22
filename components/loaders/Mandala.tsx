@@ -1,4 +1,4 @@
-import Spirograph from "../svgs/Spirograph";
+import Spirograph from "../svgs/Spirographs";
 
 export default function MandalaLoader() {
   return (
