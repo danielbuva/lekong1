@@ -11,7 +11,25 @@ import gsap from "gsap";
 import type { Dispatch, SetStateAction } from "react";
 import { Suspense, useEffect } from "react";
 
+import { View } from "./View";
+
 export default function Experience({
+  setShow,
+  show,
+}: {
+  setShow: Dispatch<SetStateAction<boolean>>;
+  show: boolean;
+}) {
+  return (
+    <Suspense fallback={null}>
+      <View className="absolute top-0 min-h-screen sm:w-full">
+        <Three setShow={setShow} show={show} />
+      </View>
+    </Suspense>
+  );
+}
+
+function Three({
   setShow,
   show,
 }: {
@@ -31,8 +49,9 @@ export default function Experience({
       gsap.to(camera.up, { duration: 0.8, ease: "power1", x: 0, y: 1, z: 0 });
     }
   }, [show, camera.position, camera.up]);
+
   return (
-    <Suspense fallback={null}>
+    <>
       <Stars
         count={5000}
         depth={10}
@@ -66,6 +85,6 @@ export default function Experience({
       <ArcballControls dampingFactor={5} enablePan={false} makeDefault />
       <HerbWorkStationPlaceHolder visible={show} />
       <Poster visible={show} />
-    </Suspense>
+    </>
   );
 }

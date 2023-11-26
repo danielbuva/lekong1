@@ -7,12 +7,6 @@ import { useState } from "react";
 const Experience = dynamic(
   () => import("@/components/canvas/Experience").then((mod) => mod.default),
   {
-    ssr: false,
-  },
-);
-const View = dynamic(
-  () => import("@/components/canvas/View").then((mod) => mod.View),
-  {
     loading: () => {
       return (
         <div className="absolute z-30 flex h-screen w-screen items-center justify-center bg-blue-500">
@@ -56,9 +50,7 @@ export default function Page() {
         <LekongNameLogo onClick={() => setShow(true)} />
         <ThemeSwitcher />
       </div>
-      <View className="absolute top-0 min-h-screen sm:w-full">
-        <Experience setShow={setShow} show={show} />
-      </View>
+      <Experience setShow={setShow} show={show} />
       <div className="z-10 flex w-full justify-between p-6">
         <AudioControls />
         <LekongIconLogo />
